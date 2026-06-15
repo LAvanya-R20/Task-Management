@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'delete_history' %}">DELETE ALL</a> 
+<a href="{% url 'restore_all' %}">RESTORE ALL</a><br><br>
+
+<table border="1px solid black">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Desciption</th>
+        <th>Person</th>
+        <th>Email</th>
+        <th>deadline</th>
+        <th>status</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for i in k %}
+        <tr>   
+        <td>{{i.title}}</td> 
+        <td>{{i.description}}</td>  
+        <td>{{i.person}}</td>   
+        <td>{{i.email}}</td>
+        <td>{{i.deadline}}</td>
+        <td>{{i.status}}</td>   
+        <td>
+            <a href="{% url 'restore' i.id %}">RESTORE</a>
+            <a href="{% url 'delete_restore' i.id %}">DELETE</a>    
+        </td>
+        <br>  
+        </tr>     
+    {% endfor %}
+    </tbody>
+</table>
+    
+
+{% endblock %}
